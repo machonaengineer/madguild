@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAD GUILD | カバディチーム</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --red: #CC1122; --red-bright: #FF1A2E;
-    --blue: #1A3AFF; --blue-neon: #00AAFF;
+    --blue: #1A3AFF; --blue-neon: #00AAFF; --blue-def: #3355FF;
     --black: #050508; --dark: #0A0A12; --mid: #12121E; --white: #F0F0F0;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,11 +38,11 @@ font-family: ‘Black Ops One’, cursive; font-size: 1.6rem; letter-spacing: 0.
 background: linear-gradient(135deg, var(–red-bright), var(–blue-neon));
 -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
 .nav-links a {
 color: rgba(240,240,240,0.7); text-decoration: none;
-font-family: ‘Oswald’, sans-serif; font-size: 0.85rem;
-letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; position: relative;
+font-family: ‘Oswald’, sans-serif; font-size: 0.82rem;
+letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; position: relative;
 }
 .nav-links a::after {
 content: ‘’; position: absolute; bottom: -4px; left: 0; right: 0;
@@ -184,7 +184,7 @@ pointer-events: none;
 #schedule { background: var(–dark); }
 .schedule-list { display: flex; flex-direction: column; gap: 2px; margin-top: 1rem; }
 .schedule-item {
-display: grid; grid-template-columns: 140px 1fr auto;
+display: grid; grid-template-columns: 180px 1fr auto;
 align-items: center; gap: 2rem;
 background: var(–mid); padding: 1.8rem 2.5rem;
 border-left: 3px solid rgba(255,255,255,0.06);
@@ -192,19 +192,90 @@ transition: border-color 0.3s, transform 0.2s;
 }
 .schedule-item:hover { border-left-color: var(–red-bright); transform: translateX(4px); }
 .schedule-item.upcoming { border-left-color: var(–red-bright); }
-.schedule-date { font-family: ‘Bebas Neue’, cursive; font-size: 1.5rem; color: var(–red-bright); line-height: 1.2; }
-.schedule-date span { display: block; font-family: ‘Oswald’, sans-serif; font-size: 0.75rem; color: rgba(240,240,240,0.4); letter-spacing: 0.1em; }
-.schedule-info h3 { font-family: ‘Oswald’, sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; margin-bottom: 4px; }
-.schedule-info p { font-size: 0.85rem; color: rgba(240,240,240,0.5); }
+.schedule-date-big { font-family: ‘Bebas Neue’, cursive; font-size: 2.2rem; color: var(–red-bright); line-height: 1; letter-spacing: 0.02em; }
+.schedule-date-big .year { font-family: ‘Oswald’, sans-serif; font-size: 0.7rem; color: rgba(240,240,240,0.4); letter-spacing: 0.15em; display: block; margin-bottom: 4px; }
+.schedule-date-big .time { font-family: ‘Oswald’, sans-serif; font-size: 0.85rem; color: rgba(240,240,240,0.5); letter-spacing: 0.1em; display: block; margin-top: 4px; }
+.schedule-info h3 { font-family: ‘Oswald’, sans-serif; font-size: 1.15rem; letter-spacing: 0.05em; margin-bottom: 6px; }
+.schedule-info p { font-size: 0.85rem; color: rgba(240,240,240,0.55); line-height: 1.6; }
+.schedule-info .vs { color: var(–blue-neon); font-weight: 700; }
 .schedule-badge {
 font-family: ‘Oswald’, sans-serif; font-size: 0.7rem; letter-spacing: 0.15em;
 padding: 6px 14px; border-radius: 2px; white-space: nowrap;
 }
 .badge-upcoming { background: rgba(255,26,46,0.2); color: var(–red-bright); border: 1px solid rgba(255,26,46,0.3); }
 .badge-tbd { background: rgba(255,255,255,0.05); color: rgba(240,240,240,0.4); border: 1px solid rgba(255,255,255,0.1); }
-.schedule-note { margin-top: 2rem; font-size: 0.85rem; color: rgba(240,240,240,0.35); text-align: center; letter-spacing: 0.05em; }
+.schedule-note { margin-top: 2.5rem; font-size: 0.85rem; color: rgba(240,240,240,0.4); text-align: center; letter-spacing: 0.03em; }
+.schedule-note a { color: var(–blue-neon); text-decoration: none; }
 
-/* KABADDI */
+/* SCENARIOS */
+.scenarios-header { text-align: center; margin-bottom: 2.5rem; margin-top: 2rem; }
+.scenarios-title { font-family: ‘Black Ops One’, cursive; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.02em; margin-top: 0.5rem; }
+.scenarios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2.5rem; }
+.scenario {
+background: var(–mid); padding: 1.5rem;
+display: flex; flex-direction: column;
+border-top: 3px solid transparent;
+transition: border-color 0.3s;
+}
+.scenario:hover { border-top-color: var(–red-bright); }
+.scenario-label {
+display: flex; align-items: baseline; gap: 0.75rem;
+padding-bottom: 1rem; margin-bottom: 1rem;
+border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.scenario-num {
+font-family: ‘Bebas Neue’, cursive; font-size: 1.8rem; color: var(–red-bright); line-height: 1;
+}
+.scenario-name {
+font-family: ‘Oswald’, sans-serif; font-size: 1rem; letter-spacing: 0.08em; color: var(–white);
+}
+.scenario-label-tackle .scenario-num { color: var(–blue-neon); }
+.scenario-label-bonus .scenario-num { color: #ffd700; }
+.scenario-svg-wrap {
+background: linear-gradient(135deg, #0a0012 0%, #001a20 50%, #0a0012 100%);
+padding: 0.5rem; margin-bottom: 1rem;
+border: 1px solid rgba(255,255,255,0.04);
+flex-grow: 0;
+}
+.scenario-svg { width: 100%; height: auto; display: block; }
+.scenario-desc { flex-grow: 1; }
+.scenario-desc p { font-size: 0.85rem; line-height: 1.7; color: rgba(240,240,240,0.6); }
+.scenario-desc p strong { color: var(–white); }
+.score-row {
+display: flex; align-items: center; justify-content: space-between;
+padding: 0.75rem 1rem; margin-bottom: 1rem;
+background: rgba(0,0,0,0.3); border-left: 3px solid var(–red-bright);
+}
+.scenario-label-tackle ~ .scenario-desc .score-row { border-left-color: var(–blue-neon); }
+.team-label {
+font-family: ‘Oswald’, sans-serif; font-size: 0.75rem; letter-spacing: 0.15em;
+}
+.team-us { color: var(–red-bright); }
+.team-opp { color: var(–blue-neon); }
+.score-plus { font-family: ‘Bebas Neue’, cursive; font-size: 1.5rem; color: var(–red-bright); line-height: 1; }
+.score-plus-opp { color: var(–blue-neon); }
+.score-plus-bonus { color: #ffd700; }
+
+/* Legend */
+.court-legend {
+display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem 2.5rem;
+padding: 1.2rem; margin-bottom: 4rem;
+background: var(–mid); border: 1px solid rgba(255,255,255,0.04);
+}
+.legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: rgba(240,240,240,0.7); letter-spacing: 0.05em; }
+.legend-dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.legend-line { width: 24px; height: 2px; background: white; display: inline-block; }
+.legend-line-dashed { background: repeating-linear-gradient(90deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 4px, transparent 4px, transparent 8px); }
+.legend-line-bonus { background: repeating-linear-gradient(90deg, #ffd700 0px, #ffd700 2px, transparent 2px, transparent 5px); }
+
+.kabaddi-source {
+text-align: center; margin-top: 3rem; font-size: 0.8rem;
+color: rgba(240,240,240,0.4); letter-spacing: 0.05em;
+}
+.kabaddi-source a { color: var(–blue-neon); text-decoration: none; margin: 0 0.25rem; }
+.kabaddi-source a:hover { color: var(–white); }
+
+/* KABADDI BASE */
 #kabaddi { background: var(–black); overflow: hidden; }
 .bg-text {
 position: absolute; font-family: ‘Black Ops One’, cursive;
@@ -212,14 +283,21 @@ font-size: clamp(6rem, 15vw, 15rem); color: rgba(255,255,255,0.02);
 top: 50%; left: 50%; transform: translate(-50%, -50%);
 white-space: nowrap; pointer-events: none; user-select: none;
 }
-.kabaddi-lead {
-max-width: 800px; margin: 0 auto 4rem; font-size: 1rem; line-height: 2;
-color: rgba(240,240,240,0.65); text-align: center;
+.kabaddi-lead { max-width: 800px; margin: 0 auto 4rem; font-size: 1rem; line-height: 2; color: rgba(240,240,240,0.65); text-align: center; }
+.kabaddi-rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 2rem; }
+.rule-card {
+background: var(–mid); padding: 2.5rem;
+border-left: 3px solid transparent; transition: border-color 0.3s;
+display: grid; grid-template-columns: 60px 1fr; gap: 1.5rem; align-items: start;
 }
-.kabaddi-rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-.rule-card { background: var(–mid); padding: 2.5rem; border-left: 3px solid transparent; transition: border-color 0.3s; }
 .rule-card:hover { border-left-color: var(–red-bright); }
-.rule-num { font-family: ‘Bebas Neue’, cursive; font-size: 3.5rem; color: rgba(204,17,34,0.15); line-height: 1; margin-bottom: 0.5rem; }
+.rule-icon {
+width: 56px; height: 56px; background: rgba(255,26,46,0.08);
+border: 1px solid rgba(255,26,46,0.2);
+display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.rule-icon svg { width: 32px; height: 32px; }
+.rule-num { font-family: ‘Bebas Neue’, cursive; font-size: 1rem; color: rgba(204,17,34,0.6); line-height: 1; margin-bottom: 4px; letter-spacing: 0.1em; }
 .rule-title { font-family: ‘Oswald’, sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
 .rule-desc { font-size: 0.875rem; line-height: 1.7; color: rgba(240,240,240,0.5); }
 
@@ -227,25 +305,62 @@ color: rgba(240,240,240,0.65); text-align: center;
 #videos { background: var(–mid); }
 .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
 .video-card { background: var(–dark); overflow: hidden; position: relative; }
+.video-num {
+position: absolute; top: 10px; left: 10px; z-index: 2;
+background: rgba(5,5,8,0.85); color: var(–red-bright);
+padding: 4px 10px; font-family: ‘Bebas Neue’, cursive; font-size: 0.9rem;
+letter-spacing: 0.08em; border-left: 2px solid var(–red-bright);
+}
 .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
 .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.video-card:hover { z-index: 2; }
+
+/* PARTNERS (相互リンク) */
+#partners { background: var(–dark); }
+.partners-grid {
+display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+margin-top: 1rem;
+}
+.partner-card {
+background: var(–mid); padding: 2rem;
+min-height: 160px;
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+gap: 0.5rem; text-align: center;
+border: 1px solid rgba(255,255,255,0.03);
+transition: all 0.3s;
+}
+.partner-card:hover { border-color: rgba(255,26,46,0.3); }
+.partner-card .placeholder-icon {
+width: 48px; height: 48px; border: 1px dashed rgba(255,255,255,0.2);
+display: flex; align-items: center; justify-content: center;
+color: rgba(255,255,255,0.3); font-size: 1.5rem; margin-bottom: 0.5rem;
+}
+.partner-card .partner-name {
+font-family: ‘Oswald’, sans-serif; font-size: 0.85rem;
+letter-spacing: 0.1em; color: rgba(240,240,240,0.4);
+}
+.partner-card .partner-sub { font-size: 0.7rem; color: rgba(240,240,240,0.25); letter-spacing: 0.05em; }
+.partners-cta {
+margin-top: 2.5rem; text-align: center;
+padding: 2rem; background: var(–mid);
+border: 1px solid rgba(255,26,46,0.2);
+}
+.partners-cta p { font-size: 0.9rem; color: rgba(240,240,240,0.6); margin-bottom: 1rem; line-height: 1.7; }
 
 /* SNS */
-#sns { background: var(–dark); text-align: center; }
-.sns-grid { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
+#sns { background: var(–black); text-align: center; }
 .sns-card {
 background: var(–mid); border: 1px solid rgba(255,255,255,0.06);
-padding: 2rem 3rem; min-width: 200px; text-decoration: none; color: var(–white);
-display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+padding: 2.5rem 4rem; text-decoration: none; color: var(–white);
+display: inline-flex; flex-direction: column; align-items: center; gap: 0.75rem;
 transition: all 0.3s; position: relative; overflow: hidden;
 clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+margin-top: 2rem;
 }
 .sns-card::before { content: ‘’; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(204,17,34,0.1), transparent); opacity: 0; transition: opacity 0.3s; }
 .sns-card:hover { border-color: rgba(204,17,34,0.4); transform: translateY(-4px); }
 .sns-card:hover::before { opacity: 1; }
-.sns-icon { font-size: 2rem; }
-.sns-name { font-family: ‘Oswald’, sans-serif; letter-spacing: 0.1em; font-size: 0.95rem; text-transform: uppercase; }
+.sns-icon { font-size: 2.5rem; }
+.sns-name { font-family: ‘Oswald’, sans-serif; letter-spacing: 0.12em; font-size: 1.05rem; text-transform: uppercase; }
 
 footer { background: var(–black); border-top: 1px solid rgba(255,255,255,0.04); padding: 3rem; text-align: center; }
 .footer-logo {
@@ -270,13 +385,20 @@ nav { padding: 0 1.5rem; }
 .hero-logo-glow { width: 260px; height: 260px; }
 .about-grid, .uniform-layout { grid-template-columns: 1fr; }
 .features-grid, .kabaddi-rules { grid-template-columns: 1fr; }
-.video-grid { grid-template-columns: 1fr; }
+.scenarios-grid { grid-template-columns: 1fr; }
+.court-legend { gap: 0.75rem 1.5rem; }
+.video-grid, .partners-grid { grid-template-columns: 1fr 1fr; }
 .schedule-item { grid-template-columns: 1fr; gap: 0.75rem; }
 .container { padding: 0 1.5rem; }
 section { padding: 4rem 0; }
+.court-steps { grid-template-columns: repeat(2, 1fr); }
+.court-container { padding: 1.5rem; }
+.rule-card { grid-template-columns: 1fr; }
+.rule-icon { margin-bottom: 0.5rem; }
 }
 @media (min-width: 901px) and (max-width: 1100px) {
 .video-grid { grid-template-columns: repeat(2, 1fr); }
+.partners-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 
@@ -286,15 +408,14 @@ section { padding: 4rem 0; }
 <nav>
   <div class="nav-logo">MAD GUILD</div>
   <ul class="nav-links">
-    <li><a href="#about">チームについて</a></li>
+    <li><a href="#about">チーム</a></li>
     <li><a href="#schedule">試合情報</a></li>
     <li><a href="#videos">試合映像</a></li>
-    <li><a href="#kabaddi">カバディとは</a></li>
+    <li><a href="#kabaddi">カバディ</a></li>
+    <li><a href="#partners">相互リンク</a></li>
     <li><a href="#sns">SNS</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
   <div class="hero-left">
@@ -305,7 +426,7 @@ section { padding: 4rem 0; }
     </h1>
     <p class="hero-sub">狂気と誇りを持って戦え</p>
     <div class="hero-cta-group">
-      <a href="#about" class="btn-primary">チームを知る</a>
+      <a href="#schedule" class="btn-primary">次の試合を見る</a>
       <a href="https://x.com/madguild_" target="_blank" class="btn-outline">X / Twitter →</a>
     </div>
   </div>
@@ -319,8 +440,6 @@ section { padding: 4rem 0; }
 
 <div class="section-divider"></div>
 
-<!-- ABOUT -->
-
 <section id="about">
   <div class="container">
     <div class="about-grid">
@@ -330,8 +449,8 @@ section { padding: 4rem 0; }
           <h2 class="section-title">俺たちが<br>MAD GUILDだ</h2>
         </div>
         <p><strong>MAD GUILD</strong>は、カバディに本気で向き合う選手たちが集まったチームだ。試合のたびに、力と戦略で相手を圧倒する。</p>
-        <p>クラウンのエンブレムが示す通り、俺たちは一筋縄ではいかない。レイドもディフェンスも、常に相手の予測を外す<strong>独自のスタイル</strong>でフィールドを制する。</p>
-        <p>「<strong>狂気と誇りを持って戦え</strong>」——勝利への執念と仲間への信頼、この二つがMAD GUILDを動かす原動力だ。</p>
+        <p>クラウンのエンブレムが示す通り、俺たちは一筋縄ではいかない。レイドもアンティ（守備）も、常に相手の予測を外す<strong>独自のスタイル</strong>でフィールドを制する。</p>
+        <p>「<strong>狂気と誇りを持って戦え</strong>」——勝利への執念と仲間への信頼、この二つがMAD GUILDを動かす。</p>
         <a href="#schedule" class="btn-primary" style="margin-top:1.5rem;">試合情報を見る</a>
       </div>
       <div class="reveal reveal-delay-2" style="display:flex;align-items:center;justify-content:center;">
@@ -341,9 +460,7 @@ section { padding: 4rem 0; }
   </div>
 </section>
 
-<!-- FEATURES -->
-
-<section id="features" style="background:var(--black);">
+<section id="features">
   <div class="container">
     <div class="section-header reveal" style="text-align:center; margin-bottom:3rem;">
       <p class="section-eyebrow" style="justify-content:center;">OUR STRENGTHS</p>
@@ -353,11 +470,11 @@ section { padding: 4rem 0; }
       <div class="feature-card reveal">
         <span class="feature-icon">⚡</span>
         <h3 class="feature-title">多彩なレイド技術</h3>
-        <p class="feature-desc">縦攻め・横攻め・ドゥービキなど豊富な技を状況に応じて使い分け、相手ディフェンスを崩す。</p>
+        <p class="feature-desc">縦攻め・横攻め・ドゥッキなど、幅広い技術を状況に応じて使い分け、相手アンティを崩していく。</p>
       </div>
       <div class="feature-card reveal reveal-delay-1">
         <span class="feature-icon">🛡️</span>
-        <h3 class="feature-title">堅いディフェンス</h3>
+        <h3 class="feature-title">堅いアンティ</h3>
         <p class="feature-desc">7人の連携でレイダーを確実に捕捉。コートの隅まで読み切る守備力がチームの柱だ。</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
@@ -369,9 +486,7 @@ section { padding: 4rem 0; }
   </div>
 </section>
 
-<!-- UNIFORM -->
-
-<section id="uniform" style="background:var(--mid);overflow:hidden;position:relative;">
+<section id="uniform">
   <div class="container">
     <div class="uniform-layout">
       <div class="reveal">
@@ -405,24 +520,51 @@ section { padding: 4rem 0; }
       <h2 class="section-title">試合情報・告知</h2>
     </div>
     <div class="schedule-list reveal">
-      <div class="schedule-item upcoming">
-        <div class="schedule-date">TBD<span>DATE</span></div>
-        <div class="schedule-info">
-          <h3>次回試合（近日発表）</h3>
-          <p>詳細はSNSで随時告知予定</p>
-        </div>
-        <span class="schedule-badge badge-upcoming">UPCOMING</span>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-date">TBD<span>DATE</span></div>
-        <div class="schedule-info">
-          <h3>練習試合・イベント</h3>
-          <p>参加・対戦希望のチームはXまでDMを</p>
-        </div>
-        <span class="schedule-badge badge-tbd">調整中</span>
-      </div>
+
+```
+  <div class="schedule-item upcoming">
+    <div class="schedule-date-big">
+      <span class="year">2026</span>
+      5.16 <span style="font-size:1.4rem;">FRI</span>
+      <span class="time">⏰ 15:30 KICKOFF</span>
     </div>
-    <p class="schedule-note reveal">最新の試合情報は <a href="https://x.com/madguild_" target="_blank" style="color:var(--blue-neon);text-decoration:none;">@madguild_</a> で発信しています</p>
+    <div class="schedule-info">
+      <h3>リーグ戦</h3>
+      <p>MAD GUILD <span class="vs">VS</span> WASEDA MONSTERS</p>
+    </div>
+    <span class="schedule-badge badge-upcoming">次の試合</span>
+  </div>
+
+  <div class="schedule-item upcoming">
+    <div class="schedule-date-big">
+      <span class="year">2026</span>
+      8.1 - 8.2
+      <span class="time">SAT - SUN</span>
+    </div>
+    <div class="schedule-info">
+      <h3>東日本大会</h3>
+      <p>東日本カバディ選手権大会</p>
+    </div>
+    <span class="schedule-badge badge-upcoming">UPCOMING</span>
+  </div>
+
+  <div class="schedule-item">
+    <div class="schedule-date-big">
+      <span class="year">2026</span>
+      TBD
+      <span class="time">日程調整中</span>
+    </div>
+    <div class="schedule-info">
+      <h3>全日本カバディ選手権大会</h3>
+      <p>詳細決まり次第、SNSで告知</p>
+    </div>
+    <span class="schedule-badge badge-tbd">未定</span>
+  </div>
+
+</div>
+<p class="schedule-note reveal">最新情報は <a href="https://x.com/madguild_" target="_blank">@madguild_</a> にて随時発信中</p>
+```
+
   </div>
 </section>
 
@@ -431,107 +573,113 @@ section { padding: 4rem 0; }
 <section id="videos">
   <div class="container">
     <div class="section-header reveal">
-      <p class="section-eyebrow">MATCH VIDEOS</p>
+      <p class="section-eyebrow">MATCH VIDEOS · 時系列</p>
       <h2 class="section-title">試合映像</h2>
     </div>
     <div class="video-grid reveal">
-
-```
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/gpTbL5QAEwM" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/FR4xavzBfIU" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/CnKxmcZxnQ8" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/M3SZS8vHOEk" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/sXH2uwgcmMM" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/nRyO_wkXyt0" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/LIKgVA7F3gE" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/MwoNjA9LEqY" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/ToxiTU8RHQo" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/jYCwUQIZ-5Q" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-  <div class="video-card">
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/_CBeLjXUXSw" 
-        title="MAD GUILD 試合映像" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-</div>
-```
-
+      <div class="video-card">
+        <div class="video-num">#01</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/gpTbL5QAEwM"
+            title="MAD GUILD 試合映像 #01" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#02</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/FR4xavzBfIU"
+            title="MAD GUILD 試合映像 #02" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#03</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/CnKxmcZxnQ8"
+            title="MAD GUILD 試合映像 #03" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#04</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/M3SZS8vHOEk"
+            title="MAD GUILD 試合映像 #04" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#05</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/sXH2uwgcmMM"
+            title="MAD GUILD 試合映像 #05" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#06</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/nRyO_wkXyt0"
+            title="MAD GUILD 試合映像 #06" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#07</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/LIKgVA7F3gE"
+            title="MAD GUILD 試合映像 #07" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#08</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/MwoNjA9LEqY"
+            title="MAD GUILD 試合映像 #08" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#09</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/ToxiTU8RHQo"
+            title="MAD GUILD 試合映像 #09" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#10</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/jYCwUQIZ-5Q"
+            title="MAD GUILD 試合映像 #10" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#11</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/_CBeLjXUXSw"
+            title="MAD GUILD 試合映像 #11" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div></div>
   </div>
 </section>
 
-<!-- KABADDI -->
+<!-- KABADDI with 3 animations -->
 
 <section id="kabaddi">
   <div class="bg-text">KABADDI</div>
@@ -541,29 +689,510 @@ section { padding: 4rem 0; }
       <h2 class="section-title">カバディとは</h2>
     </div>
     <p class="kabaddi-lead reveal">
-      南アジア発祥のフルコンタクト・チームスポーツ。鬼ごっこ×格闘技ともいえる独特の競技性で、インド・パキスタン・バングラデシュでは数千年の歴史を持つ国技だ。日本でも競技人口が年々増加している。
+      南アジア発祥のフルコンタクト・チームスポーツ。鬼ごっこ × 格闘技ともいえる独特の競技性で、インド・パキスタン・バングラデシュでは数千年の歴史を持つ国技だ。日本でも競技人口が年々増加している。
     </p>
-    <div class="kabaddi-rules">
-      <div class="rule-card reveal">
-        <div class="rule-num">01</div>
-        <h3 class="rule-title">コートと人数</h3>
-        <p class="rule-desc">13m×10mのコートをミッドラインで二分。各チーム7人がコートに入り、控え選手を含めた12〜13名で編成される。</p>
+
+```
+<!-- 3 Scoring Scenarios -->
+<div class="scenarios-header reveal">
+  <p class="section-eyebrow" style="justify-content:center; color:var(--blue-neon);"><span style="width:30px;height:2px;background:var(--blue-neon);display:inline-block;"></span>3 WAYS TO SCORE</p>
+  <h3 class="scenarios-title">得点の入り方</h3>
+</div>
+
+<div class="scenarios-grid reveal">
+
+  <!-- SCENARIO 1: RAID POINT -->
+  <div class="scenario">
+    <div class="scenario-label scenario-label-raid">
+      <span class="scenario-num">01</span>
+      <span class="scenario-name">レイドポイント</span>
+    </div>
+    <div class="scenario-svg-wrap">
+      <svg viewBox="0 0 560 280" class="scenario-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow1" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Court -->
+        <rect x="30" y="40" width="500" height="200" fill="rgba(20,20,30,0.4)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        <line x1="30" y1="57" x2="530" y2="57" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <line x1="30" y1="223" x2="530" y2="223" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <line x1="280" y1="40" x2="280" y2="240" stroke="white" stroke-width="2"/>
+        <line x1="136" y1="57" x2="136" y2="223" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="424" y1="57" x2="424" y2="223" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="97" y1="57" x2="97" y2="223" stroke="#ffd700" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+        <line x1="463" y1="57" x2="463" y2="223" stroke="#ffd700" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+
+        <!-- Labels with count -->
+        <text x="145" y="32" fill="#FF1A2E" font-family="Oswald" font-weight="700" font-size="10" text-anchor="middle" letter-spacing="1.5">MAD GUILD</text>
+        <text x="200" y="32" fill="#FF1A2E" font-family="Bebas Neue" font-size="13" text-anchor="start" font-weight="700">7 / 7</text>
+        <text x="395" y="32" fill="#3355FF" font-family="Oswald" font-weight="700" font-size="10" text-anchor="middle" letter-spacing="1.5">OPPONENT</text>
+        <!-- Opponent count: 7 → 6 -->
+        <text x="450" y="32" fill="#3355FF" font-family="Bebas Neue" font-size="13" font-weight="700">
+          <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.52;0.55;0.97;1" dur="6s" repeatCount="indefinite"/>
+          7 / 7
+        </text>
+        <text x="450" y="32" fill="#3355FF" font-family="Bebas Neue" font-size="13" font-weight="700" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.52;0.55;0.97;1" dur="6s" repeatCount="indefinite"/>
+          6 / 7
+        </text>
+        <text x="424" y="258" fill="rgba(255,255,255,0.4)" font-family="Oswald" font-size="7" text-anchor="middle">BAULK</text>
+        <text x="463" y="258" fill="#ffd700" font-family="Oswald" font-size="7" text-anchor="middle" opacity="0.7">BONUS</text>
+
+        <!-- Our team (left, CLUSTERED) -->
+        <g opacity="0.55">
+          <circle cx="60" cy="115" r="6" fill="#FF1A2E"/>
+          <circle cx="60" cy="150" r="6" fill="#FF1A2E"/>
+          <circle cx="60" cy="185" r="6" fill="#FF1A2E"/>
+          <circle cx="90" cy="132" r="6" fill="#FF1A2E"/>
+          <circle cx="90" cy="168" r="6" fill="#FF1A2E"/>
+          <circle cx="120" cy="150" r="6" fill="#FF1A2E"/>
+        </g>
+
+        <!-- Antis in BOWL FORMATION (6 static + 1 animated = touched anti) -->
+        <circle cx="430" cy="180" r="7" fill="#3355FF"/>
+        <circle cx="460" cy="80" r="7" fill="#3355FF"/>
+        <circle cx="460" cy="200" r="7" fill="#3355FF"/>
+        <circle cx="495" cy="95" r="7" fill="#3355FF"/>
+        <circle cx="495" cy="185" r="7" fill="#3355FF"/>
+        <circle cx="480" cy="140" r="7" fill="#3355FF"/>
+
+        <!-- TOUCHED anti (front-top) - gets touched then EXITS the court -->
+        <circle r="7">
+          <!-- Position -->
+          <animate attributeName="cx"
+            values="430;430;430;505;505;430;430"
+            keyTimes="0;0.45;0.5;0.68;0.95;0.98;1"
+            dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy"
+            values="100;100;100;20;20;100;100"
+            keyTimes="0;0.45;0.5;0.68;0.95;0.98;1"
+            dur="6s" repeatCount="indefinite"/>
+          <!-- Color -->
+          <animate attributeName="fill"
+            values="#3355FF;#3355FF;#FF1A2E;#888;#888;#3355FF;#3355FF"
+            keyTimes="0;0.4;0.45;0.6;0.95;0.98;1"
+            dur="6s" repeatCount="indefinite"/>
+          <!-- Opacity hide during reset -->
+          <animate attributeName="opacity"
+            values="1;1;1;1;0;0;1"
+            keyTimes="0;0.45;0.9;0.94;0.96;0.98;1"
+            dur="6s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Touch ring -->
+        <circle cx="430" cy="100" r="7" fill="none" stroke="#FF1A2E" stroke-width="2" opacity="0">
+          <animate attributeName="r" values="7;24" keyTimes="0;1" dur="0.8s" begin="2.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.35;0.4;0.55;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- OUT motion trail -->
+        <path d="M 430 100 Q 470 40 505 20" fill="none" stroke="rgba(136,136,136,0.4)" stroke-width="1" stroke-dasharray="3,3" opacity="0">
+          <animate attributeName="opacity" values="0;0;0.6;0.6;0" keyTimes="0;0.5;0.55;0.7;0.75" dur="6s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- RAIDER -->
+        <g filter="url(#glow1)">
+          <circle r="9" fill="#FF1A2E" stroke="white" stroke-width="2">
+            <animate attributeName="cx"
+              values="160;160;280;380;430;380;280;160;160"
+              keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;1"
+              dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="cy"
+              values="140;140;140;120;100;120;140;140;140"
+              keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;1"
+              dur="6s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Chant bubble -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1;0.2;0.65;0.75;1" dur="6s" repeatCount="indefinite"/>
+          <rect x="210" y="8" width="140" height="20" rx="10" fill="rgba(255,26,46,0.15)" stroke="rgba(255,26,46,0.5)" stroke-width="0.5"/>
+          <text x="280" y="22" fill="white" font-family="Noto Sans JP" font-size="10" text-anchor="middle" font-weight="700" letter-spacing="1">カバディ カバディ...</text>
+        </g>
+
+        <!-- Score popup -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.7;0.75;0.8;0.95;1" dur="6s" repeatCount="indefinite"/>
+          <text x="160" y="50" fill="#FF1A2E" font-family="Bebas Neue" font-size="22" text-anchor="middle" letter-spacing="1">+1 POINT</text>
+        </g>
+      </svg>
+    </div>
+    <div class="scenario-desc">
+      <div class="score-row">
+        <span class="team-label team-us">MAD GUILD</span>
+        <span class="score-plus">+1</span>
       </div>
-      <div class="rule-card reveal reveal-delay-1">
-        <div class="rule-num">02</div>
-        <h3 class="rule-title">レイド（攻撃）</h3>
-        <p class="rule-desc">攻撃チームが1人のレイダーを送り込む。レイダーは「カバディ、カバディ…」と発声（キャント）を続けながら相手選手にタッチし、自陣に帰還すれば得点。一息でキャントし続けられる時間が攻撃時間の上限だ。</p>
+      <p>レイダーがアンティにタッチ → 自陣に帰還で得点。<strong>タッチされたアンティはアウト</strong>となり退場する。</p>
+    </div>
+  </div>
+
+  <!-- SCENARIO 2: TACKLE POINT -->
+  <div class="scenario">
+    <div class="scenario-label scenario-label-tackle">
+      <span class="scenario-num">02</span>
+      <span class="scenario-name">タックルポイント</span>
+    </div>
+    <div class="scenario-svg-wrap">
+      <svg viewBox="0 0 560 280" class="scenario-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <rect x="30" y="40" width="500" height="200" fill="rgba(20,20,30,0.4)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        <line x1="30" y1="57" x2="530" y2="57" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <line x1="30" y1="223" x2="530" y2="223" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <line x1="280" y1="40" x2="280" y2="240" stroke="white" stroke-width="2"/>
+        <line x1="136" y1="57" x2="136" y2="223" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="424" y1="57" x2="424" y2="223" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="97" y1="57" x2="97" y2="223" stroke="#ffd700" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+        <line x1="463" y1="57" x2="463" y2="223" stroke="#ffd700" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+
+        <text x="145" y="32" fill="#FF1A2E" font-family="Oswald" font-weight="700" font-size="10" text-anchor="middle" letter-spacing="1.5">MAD GUILD</text>
+        <!-- MAD GUILD count: 7 → 6 -->
+        <text x="200" y="32" fill="#FF1A2E" font-family="Bebas Neue" font-size="13" font-weight="700">
+          <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.58;0.62;0.97;1" dur="6s" repeatCount="indefinite"/>
+          7 / 7
+        </text>
+        <text x="200" y="32" fill="#FF1A2E" font-family="Bebas Neue" font-size="13" font-weight="700" opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.58;0.62;0.97;1" dur="6s" repeatCount="indefinite"/>
+          6 / 7
+        </text>
+        <text x="395" y="32" fill="#3355FF" font-family="Oswald" font-weight="700" font-size="10" text-anchor="middle" letter-spacing="1.5">OPPONENT</text>
+        <text x="450" y="32" fill="#3355FF" font-family="Bebas Neue" font-size="13" font-weight="700">7 / 7</text>
+        <text x="424" y="258" fill="rgba(255,255,255,0.4)" font-family="Oswald" font-size="7" text-anchor="middle">BAULK</text>
+        <text x="463" y="258" fill="#ffd700" font-family="Oswald" font-size="7" text-anchor="middle" opacity="0.7">BONUS</text>
+
+        <!-- Our team CLUSTERED -->
+        <g opacity="0.55">
+          <circle cx="60" cy="115" r="6" fill="#FF1A2E"/>
+          <circle cx="60" cy="150" r="6" fill="#FF1A2E"/>
+          <circle cx="60" cy="185" r="6" fill="#FF1A2E"/>
+          <circle cx="90" cy="132" r="6" fill="#FF1A2E"/>
+          <circle cx="90" cy="168" r="6" fill="#FF1A2E"/>
+          <circle cx="120" cy="150" r="6" fill="#FF1A2E"/>
+        </g>
+
+        <!-- Antis CONVERGING bowl -->
+        <circle r="7" fill="#3355FF">
+          <animate attributeName="cx" values="430;430;415;415;430;430" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="100;100;125;125;100;100" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="7" fill="#3355FF">
+          <animate attributeName="cx" values="430;430;415;415;430;430" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="180;180;155;155;180;180" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="7" fill="#3355FF">
+          <animate attributeName="cx" values="460;460;430;430;460;460" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="80;80;120;120;80;80" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="7" fill="#3355FF">
+          <animate attributeName="cx" values="460;460;430;430;460;460" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="200;200;160;160;200;200" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="7" fill="#3355FF">
+          <animate attributeName="cx" values="495;495;445;445;495;495" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="95;95;125;125;95;95" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="7" fill="#3355FF">
+          <animate attributeName="cx" values="495;495;445;445;495;495" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="185;185;155;155;185;185" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="7" fill="#3355FF">
+          <animate attributeName="cx" values="480;480;445;445;480;480" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="140;140;140;140;140;140" keyTimes="0;0.3;0.5;0.7;0.85;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- RAIDER gets caught THEN EXITS -->
+        <g filter="url(#glow2)">
+          <circle r="9" stroke="white" stroke-width="2">
+            <!-- Path: enter, get caught, exit out to top-left -->
+            <animate attributeName="cx"
+              values="160;160;280;400;430;430;430;90;90;160;160"
+              keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.75;0.94;0.97;1"
+              dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="cy"
+              values="140;140;140;140;140;138;142;25;25;140;140"
+              keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.75;0.94;0.97;1"
+              dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="fill"
+              values="#FF1A2E;#FF1A2E;#FF1A2E;#FF1A2E;#FF1A2E;#FF1A2E;#888;#888;#888;#FF1A2E;#FF1A2E"
+              keyTimes="0;0.1;0.2;0.3;0.4;0.55;0.65;0.75;0.94;0.97;1"
+              dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity"
+              values="1;1;1;1;0;0;1;1"
+              keyTimes="0;0.9;0.93;0.95;0.96;0.98;0.99;1"
+              dur="6s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- OUT motion trail -->
+        <path d="M 430 140 Q 230 60 90 25" fill="none" stroke="rgba(136,136,136,0.3)" stroke-width="1" stroke-dasharray="3,3" opacity="0">
+          <animate attributeName="opacity" values="0;0;0.5;0.5;0" keyTimes="0;0.6;0.7;0.78;0.85" dur="6s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- Catch ring -->
+        <circle cx="430" cy="140" r="15" fill="none" stroke="#3355FF" stroke-width="2" opacity="0">
+          <animate attributeName="r" values="15;40" keyTimes="0;1" dur="0.8s" begin="2.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;1;0" keyTimes="0;0.42;0.5;0.65" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.45;0.55;0.7;0.75" dur="6s" repeatCount="indefinite"/>
+          <text x="430" y="110" fill="#3355FF" font-family="Oswald" font-weight="700" font-size="11" text-anchor="middle" letter-spacing="2">CAUGHT!</text>
+        </g>
+
+        <!-- Score popup OPPONENT -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.75;0.82;0.86;0.95;1" dur="6s" repeatCount="indefinite"/>
+          <text x="405" y="50" fill="#3355FF" font-family="Bebas Neue" font-size="22" text-anchor="middle" letter-spacing="1">+1 POINT</text>
+        </g>
+      </svg>
+    </div>
+    <div class="scenario-desc">
+      <div class="score-row">
+        <span class="team-label team-opp">OPPONENT</span>
+        <span class="score-plus score-plus-opp">+1</span>
       </div>
-      <div class="rule-card reveal reveal-delay-1">
-        <div class="rule-num">03</div>
-        <h3 class="rule-title">ディフェンス（アンティ）</h3>
-        <p class="rule-desc">守備側7人（アンティ）はレイダーをコート内で捕捉すれば得点。レイダーを止め切れればそれだけで大きなアドバンテージになる。</p>
+      <p>アンティがお椀型でレイダーを包囲・捕獲。<strong>帰れなかったレイダーはアウト</strong>、アンティ側に得点。</p>
+    </div>
+  </div>
+
+  <!-- SCENARIO 3: BONUS POINT -->
+  <div class="scenario">
+    <div class="scenario-label scenario-label-bonus">
+      <span class="scenario-num">03</span>
+      <span class="scenario-name">ボーナスポイント</span>
+    </div>
+    <div class="scenario-svg-wrap">
+      <svg viewBox="0 0 560 280" class="scenario-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow3" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <rect x="30" y="40" width="500" height="200" fill="rgba(20,20,30,0.4)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        <line x1="30" y1="57" x2="530" y2="57" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <line x1="30" y1="223" x2="530" y2="223" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <line x1="280" y1="40" x2="280" y2="240" stroke="white" stroke-width="2"/>
+        <line x1="136" y1="57" x2="136" y2="223" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="424" y1="57" x2="424" y2="223" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="97" y1="57" x2="97" y2="223" stroke="#ffd700" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+        <line x1="463" y1="57" x2="463" y2="223" stroke="#ffd700" stroke-width="2" stroke-dasharray="2,3">
+          <animate attributeName="opacity" values="0.6;1;0.6" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+        </line>
+
+        <text x="145" y="32" fill="#FF1A2E" font-family="Oswald" font-weight="700" font-size="10" text-anchor="middle" letter-spacing="1.5">MAD GUILD</text>
+        <text x="200" y="32" fill="#FF1A2E" font-family="Bebas Neue" font-size="13" font-weight="700">7 / 7</text>
+        <text x="395" y="32" fill="#3355FF" font-family="Oswald" font-weight="700" font-size="10" text-anchor="middle" letter-spacing="1.5">OPPONENT</text>
+        <text x="450" y="32" fill="#3355FF" font-family="Bebas Neue" font-size="13" font-weight="700">7 / 7</text>
+        <text x="424" y="258" fill="rgba(255,255,255,0.4)" font-family="Oswald" font-size="7" text-anchor="middle">BAULK</text>
+        <text x="463" y="258" fill="#ffd700" font-family="Oswald" font-weight="700" font-size="8" text-anchor="middle" letter-spacing="1">BONUS LINE</text>
+
+        <!-- Our team CLUSTERED -->
+        <g opacity="0.55">
+          <circle cx="60" cy="115" r="6" fill="#FF1A2E"/>
+          <circle cx="60" cy="150" r="6" fill="#FF1A2E"/>
+          <circle cx="60" cy="185" r="6" fill="#FF1A2E"/>
+          <circle cx="90" cy="132" r="6" fill="#FF1A2E"/>
+          <circle cx="90" cy="168" r="6" fill="#FF1A2E"/>
+          <circle cx="120" cy="150" r="6" fill="#FF1A2E"/>
+        </g>
+
+        <!-- Antis in bowl (static) -->
+        <circle cx="430" cy="100" r="7" fill="#3355FF"/>
+        <circle cx="430" cy="180" r="7" fill="#3355FF"/>
+        <circle cx="460" cy="80" r="7" fill="#3355FF"/>
+        <circle cx="460" cy="200" r="7" fill="#3355FF"/>
+        <circle cx="495" cy="95" r="7" fill="#3355FF"/>
+        <circle cx="495" cy="185" r="7" fill="#3355FF"/>
+        <circle cx="480" cy="140" r="7" fill="#3355FF"/>
+
+        <!-- Raider crosses bonus line -->
+        <g filter="url(#glow3)">
+          <circle r="9" fill="#FF1A2E" stroke="white" stroke-width="2">
+            <animate attributeName="cx"
+              values="160;160;280;400;450;475;450;280;160;160"
+              keyTimes="0;0.1;0.2;0.3;0.38;0.45;0.55;0.65;0.75;1"
+              dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="cy"
+              values="140;140;140;130;125;125;130;140;140;140"
+              keyTimes="0;0.1;0.2;0.3;0.38;0.45;0.55;0.65;0.75;1"
+              dur="6s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Bonus flash -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.4;0.42;0.45;0.55;0.6" dur="6s" repeatCount="indefinite"/>
+          <rect x="440" y="115" width="60" height="28" rx="4" fill="#ffd700" opacity="0.2"/>
+          <text x="470" y="125" fill="#ffd700" font-family="Bebas Neue" font-size="11" text-anchor="middle" font-weight="700">BONUS</text>
+          <text x="470" y="138" fill="#ffd700" font-family="Bebas Neue" font-size="14" text-anchor="middle" font-weight="700">+1</text>
+        </g>
+
+        <!-- Score popup -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.75;0.82;0.86;0.95;1" dur="6s" repeatCount="indefinite"/>
+          <text x="160" y="50" fill="#ffd700" font-family="Bebas Neue" font-size="22" text-anchor="middle" letter-spacing="1">+1 BONUS</text>
+        </g>
+      </svg>
+    </div>
+    <div class="scenario-desc">
+      <div class="score-row">
+        <span class="team-label team-us">MAD GUILD</span>
+        <span class="score-plus score-plus-bonus">+1</span>
       </div>
-      <div class="rule-card reveal reveal-delay-2">
-        <div class="rule-num">04</div>
-        <h3 class="rule-title">リバイバルと試合時間</h3>
-        <p class="rule-desc">アウトになった選手は退場するが、自チームが得点するたびに順番でコートに復活できる（リバイバル）。男子は前後半各20分、女子は各15分で行われる。</p>
+      <p>アンティが6人以上コートにいる時、レイダーが<strong>ボーナスラインを越える</strong>と+1。退場なし。</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Legend -->
+<div class="court-legend reveal">
+  <div class="legend-item">
+    <span class="legend-dot" style="background:#FF1A2E;border:2px solid white;"></span>
+    <span>レイダー（攻撃）</span>
+  </div>
+  <div class="legend-item">
+    <span class="legend-dot" style="background:#3355FF;"></span>
+    <span>アンティ（守備）</span>
+  </div>
+  <div class="legend-item">
+    <span class="legend-dot" style="background:#888;"></span>
+    <span>アウト（退場）</span>
+  </div>
+  <div class="legend-item">
+    <span class="legend-line"></span>
+    <span>ミッドライン</span>
+  </div>
+  <div class="legend-item">
+    <span class="legend-line legend-line-dashed"></span>
+    <span>ボークライン</span>
+  </div>
+  <div class="legend-item">
+    <span class="legend-line legend-line-bonus"></span>
+    <span>ボーナスライン</span>
+  </div>
+</div>
+
+<!-- Basic rules -->
+<div class="kabaddi-rules">
+  <div class="rule-card reveal">
+    <div class="rule-icon">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FF1A2E" stroke-width="1.5">
+        <rect x="3" y="8" width="26" height="16"/>
+        <line x1="16" y1="8" x2="16" y2="24"/>
+        <circle cx="9" cy="12" r="1.5" fill="#FF1A2E"/>
+        <circle cx="9" cy="16" r="1.5" fill="#FF1A2E"/>
+        <circle cx="9" cy="20" r="1.5" fill="#FF1A2E"/>
+        <circle cx="23" cy="12" r="1.5" fill="#3355FF" stroke="#3355FF"/>
+        <circle cx="23" cy="16" r="1.5" fill="#3355FF" stroke="#3355FF"/>
+        <circle cx="23" cy="20" r="1.5" fill="#3355FF" stroke="#3355FF"/>
+      </svg>
+    </div>
+    <div class="rule-body">
+      <div class="rule-num">RULE 01</div>
+      <h3 class="rule-title">コートと人数</h3>
+      <p class="rule-desc">13m×10mのコートをミッドラインで二分。各チーム7人がコートに入り、控え選手を含めた12〜13名で編成される。</p>
+    </div>
+  </div>
+
+  <div class="rule-card reveal reveal-delay-1">
+    <div class="rule-icon">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FF1A2E" stroke-width="1.5">
+        <circle cx="10" cy="16" r="4"/>
+        <path d="M 14 16 L 28 16" stroke-dasharray="2,2"/>
+        <path d="M 22 12 L 28 16 L 22 20"/>
+      </svg>
+    </div>
+    <div class="rule-body">
+      <div class="rule-num">RULE 02</div>
+      <h3 class="rule-title">レイド（攻撃）</h3>
+      <p class="rule-desc">攻撃側が1人のレイダーを送り込み「カバディ、カバディ…」と発声（キャント）しながら相手陣地へ。一息でキャントできる時間が攻撃の上限。</p>
+    </div>
+  </div>
+
+  <div class="rule-card reveal reveal-delay-1">
+    <div class="rule-icon">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FF1A2E" stroke-width="1.5">
+        <circle cx="10" cy="16" r="2" fill="#FF1A2E"/>
+        <path d="M 18 8 Q 26 16 18 24" fill="none"/>
+        <circle cx="18" cy="8" r="2" fill="#3355FF" stroke="#3355FF"/>
+        <circle cx="23" cy="11" r="2" fill="#3355FF" stroke="#3355FF"/>
+        <circle cx="26" cy="16" r="2" fill="#3355FF" stroke="#3355FF"/>
+        <circle cx="23" cy="21" r="2" fill="#3355FF" stroke="#3355FF"/>
+        <circle cx="18" cy="24" r="2" fill="#3355FF" stroke="#3355FF"/>
+      </svg>
+    </div>
+    <div class="rule-body">
+      <div class="rule-num">RULE 03</div>
+      <h3 class="rule-title">アンティ（守備）</h3>
+      <p class="rule-desc">守備側7人はお椀型の布陣でレイダーを包囲。タッチされないよう連携で動き、レイダーをコート内に留めれば得点。</p>
+    </div>
+  </div>
+
+  <div class="rule-card reveal reveal-delay-2">
+    <div class="rule-icon">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#FF1A2E" stroke-width="1.5">
+        <circle cx="16" cy="16" r="11"/>
+        <line x1="16" y1="16" x2="16" y2="8"/>
+        <line x1="16" y1="16" x2="22" y2="16"/>
+      </svg>
+    </div>
+    <div class="rule-body">
+      <div class="rule-num">RULE 04</div>
+      <h3 class="rule-title">試合時間</h3>
+      <p class="rule-desc">男子は前後半各20分、女子は各15分で争う。試合終了時に得点が多いチームが勝ち。</p>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- PARTNERS / 相互リンク -->
+
+<section id="partners">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">PARTNER TEAMS</p>
+      <h2 class="section-title">相互リンク</h2>
+    </div>
+    <div class="partners-grid reveal">
+      <div class="partner-card">
+        <div class="placeholder-icon">?</div>
+        <div class="partner-name">TEAM 01</div>
+        <div class="partner-sub">COMING SOON</div>
       </div>
+      <div class="partner-card">
+        <div class="placeholder-icon">?</div>
+        <div class="partner-name">TEAM 02</div>
+        <div class="partner-sub">COMING SOON</div>
+      </div>
+      <div class="partner-card">
+        <div class="placeholder-icon">?</div>
+        <div class="partner-name">TEAM 03</div>
+        <div class="partner-sub">COMING SOON</div>
+      </div>
+      <div class="partner-card">
+        <div class="placeholder-icon">?</div>
+        <div class="partner-name">TEAM 04</div>
+        <div class="partner-sub">COMING SOON</div>
+      </div>
+    </div>
+    <div class="partners-cta reveal">
+      <p>MAD GUILDと相互リンクしてくれるチーム募集中！<br>カバディで繋がれる仲間、大歓迎です。</p>
+      <a href="https://x.com/madguild_" target="_blank" class="btn-outline">DMで相談する →</a>
     </div>
   </div>
 </section>
@@ -573,24 +1202,14 @@ section { padding: 4rem 0; }
 <section id="sns">
   <div class="container">
     <div class="section-header reveal" style="text-align:center;">
-      <p class="section-eyebrow" style="justify-content:center;">JOIN US</p>
+      <p class="section-eyebrow" style="justify-content:center;">FOLLOW US</p>
       <h2 class="section-title">フォローしてくれ</h2>
     </div>
-    <div class="sns-grid reveal">
+    <div class="reveal">
       <a href="https://x.com/madguild_" target="_blank" class="sns-card">
         <span class="sns-icon">𝕏</span>
         <span class="sns-name">@madguild_</span>
         <span style="font-size:0.75rem;color:rgba(240,240,240,0.35);">X / Twitter</span>
-      </a>
-      <div class="sns-card" style="cursor:default;">
-        <span class="sns-icon">📸</span>
-        <span class="sns-name">Instagram</span>
-        <span style="font-size:0.75rem;color:rgba(240,240,240,0.35);">Coming Soon</span>
-      </div>
-      <a href="https://www.youtube.com/@madguild" target="_blank" class="sns-card">
-        <span class="sns-icon">▶️</span>
-        <span class="sns-name">YouTube</span>
-        <span style="font-size:0.75rem;color:rgba(240,240,240,0.35);">試合映像公開中</span>
       </a>
     </div>
   </div>
@@ -598,7 +1217,7 @@ section { padding: 4rem 0; }
 
 <footer>
   <div class="footer-logo">MAD GUILD</div>
-  <p class="footer-copy">© 2024 MAD GUILD Kabaddi Team. All rights reserved.</p>
+  <p class="footer-copy">© 2026 MAD GUILD Kabaddi Team. All rights reserved.</p>
 </footer>
 
 <script>
