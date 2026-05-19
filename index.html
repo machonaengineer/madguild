@@ -320,38 +320,6 @@
   .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
   .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-  /* PARTNERS (相互リンク) */
-  #partners { background: var(--dark); }
-  .partners-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
-    margin-top: 1rem;
-  }
-  .partner-card {
-    background: var(--mid); padding: 2rem;
-    min-height: 160px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 0.5rem; text-align: center;
-    border: 1px solid rgba(255,255,255,0.03);
-    transition: all 0.3s;
-  }
-  .partner-card:hover { border-color: rgba(255,26,46,0.3); }
-  .partner-card .placeholder-icon {
-    width: 48px; height: 48px; border: 1px dashed rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.3); font-size: 1.5rem; margin-bottom: 0.5rem;
-  }
-  .partner-card .partner-name {
-    font-family: 'Oswald', sans-serif; font-size: 0.85rem;
-    letter-spacing: 0.1em; color: rgba(240,240,240,0.4);
-  }
-  .partner-card .partner-sub { font-size: 0.7rem; color: rgba(240,240,240,0.25); letter-spacing: 0.05em; }
-  .partners-cta {
-    margin-top: 2.5rem; text-align: center;
-    padding: 2rem; background: var(--mid);
-    border: 1px solid rgba(255,26,46,0.2);
-  }
-  .partners-cta p { font-size: 0.9rem; color: rgba(240,240,240,0.6); margin-bottom: 1rem; line-height: 1.7; }
-
   /* SNS */
   #sns { background: var(--black); text-align: center; }
   .sns-card {
@@ -393,7 +361,7 @@
     .features-grid, .kabaddi-rules { grid-template-columns: 1fr; }
     .scenarios-grid { grid-template-columns: 1fr; }
     .court-legend { gap: 0.75rem 1.5rem; }
-    .video-grid, .partners-grid { grid-template-columns: 1fr 1fr; }
+    .video-grid { grid-template-columns: 1fr 1fr; }
     .schedule-item { grid-template-columns: 1fr; gap: 0.75rem; }
     .container { padding: 0 1.5rem; }
     section { padding: 4rem 0; }
@@ -404,7 +372,6 @@
   }
   @media (min-width: 901px) and (max-width: 1100px) {
     .video-grid { grid-template-columns: repeat(2, 1fr); }
-    .partners-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -417,7 +384,6 @@
     <li><a href="#schedule">試合情報</a></li>
     <li><a href="#videos">試合映像</a></li>
     <li><a href="#kabaddi">カバディ</a></li>
-    <li><a href="#partners">相互リンク</a></li>
     <li><a href="#sns">SNS</a></li>
   </ul>
 </nav>
@@ -1183,48 +1149,12 @@
 
 
 
-<!-- PARTNERS / 相互リンク -->
-<section id="partners">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-eyebrow">PARTNER TEAMS</p>
-      <h2 class="section-title">相互リンク</h2>
-    </div>
-    <div class="partners-grid reveal">
-      <div class="partner-card">
-        <div class="placeholder-icon">?</div>
-        <div class="partner-name">TEAM 01</div>
-        <div class="partner-sub">COMING SOON</div>
-      </div>
-      <div class="partner-card">
-        <div class="placeholder-icon">?</div>
-        <div class="partner-name">TEAM 02</div>
-        <div class="partner-sub">COMING SOON</div>
-      </div>
-      <div class="partner-card">
-        <div class="placeholder-icon">?</div>
-        <div class="partner-name">TEAM 03</div>
-        <div class="partner-sub">COMING SOON</div>
-      </div>
-      <div class="partner-card">
-        <div class="placeholder-icon">?</div>
-        <div class="partner-name">TEAM 04</div>
-        <div class="partner-sub">COMING SOON</div>
-      </div>
-    </div>
-    <div class="partners-cta reveal">
-      <p>MAD GUILDと相互リンクしてくれるチーム募集中！<br>カバディで繋がれる仲間、大歓迎です。</p>
-      <a href="https://x.com/madguild_" target="_blank" class="btn-outline">DMで相談する →</a>
-    </div>
-  </div>
-</section>
-
 <!-- SNS -->
 <section id="sns">
   <div class="container">
     <div class="section-header reveal" style="text-align:center;">
-      <p class="section-eyebrow" style="justify-content:center;">FOLLOW US</p>
-      <h2 class="section-title">フォローしてくれ</h2>
+      <p class="section-eyebrow" style="justify-content:center;">OFFICIAL SNS</p>
+      <h2 class="section-title">公式SNS</h2>
     </div>
     <div class="reveal">
       <a href="https://x.com/madguild_" target="_blank" class="sns-card">
