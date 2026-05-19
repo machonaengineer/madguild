@@ -203,6 +203,12 @@
   }
   .badge-upcoming { background: rgba(255,26,46,0.2); color: var(--red-bright); border: 1px solid rgba(255,26,46,0.3); }
   .badge-tbd { background: rgba(255,255,255,0.05); color: rgba(240,240,240,0.4); border: 1px solid rgba(255,255,255,0.1); }
+  .badge-win { background: rgba(0,229,255,0.15); color: var(--blue-neon); border: 1px solid rgba(0,229,255,0.35); }
+  .schedule-item.result { border-left-color: var(--blue-neon); }
+  .schedule-result { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .schedule-score { font-family: 'Bebas Neue', cursive; font-size: 1.6rem; color: var(--blue-neon); letter-spacing: 0.05em; line-height: 1; }
+  .schedule-score .score-opp { color: rgba(240,240,240,0.5); }
+  .schedule-score .score-sep { color: rgba(240,240,240,0.3); margin: 0 4px; }
   .schedule-note { margin-top: 2.5rem; font-size: 0.85rem; color: rgba(240,240,240,0.4); text-align: center; letter-spacing: 0.03em; }
   .schedule-note a { color: var(--blue-neon); text-decoration: none; }
 
@@ -519,17 +525,20 @@
     </div>
     <div class="schedule-list reveal">
 
-      <div class="schedule-item upcoming">
+      <div class="schedule-item result">
         <div class="schedule-date-big">
           <span class="year">2026</span>
           5.16 <span style="font-size:1.4rem;">FRI</span>
-          <span class="time">⏰ 15:30 KICKOFF</span>
+          <span class="time">FINISHED</span>
         </div>
         <div class="schedule-info">
           <h3>リーグ戦</h3>
           <p>MAD GUILD <span class="vs">VS</span> WASEDA MONSTERS</p>
         </div>
-        <span class="schedule-badge badge-upcoming">次の試合</span>
+        <div class="schedule-result">
+          <div class="schedule-score">58<span class="score-sep">-</span><span class="score-opp">40</span></div>
+          <span class="schedule-badge badge-win">WIN</span>
+        </div>
       </div>
 
       <div class="schedule-item upcoming">
@@ -666,6 +675,15 @@
         <div class="video-wrap">
           <iframe src="https://www.youtube.com/embed/_CBeLjXUXSw"
             title="MAD GUILD 試合映像 #11" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-num">#12</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/DY15thXfKik"
+            title="MAD GUILD 試合映像 #12 VS WASEDA MONSTERS" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen loading="lazy"></iframe>
         </div>
